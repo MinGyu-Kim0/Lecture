@@ -2,6 +2,8 @@
 //OOP 출발점
 //1. 모든 멤버변수 접근제한자 private
 
+import java.util.ArrayList;
+
 class MyPerson {
     int age;
     String name;
@@ -9,6 +11,7 @@ class MyPerson {
     int score2;
     int score3;
     int[] score = new int[10];
+    int e = 0;
 
     public MyPerson(String n, int a, int s1, int s2, int s3) {
         name = n;
@@ -63,11 +66,23 @@ public class ScoreAverage {
         m3.성적평균구하기();
         m3.성적표출력();
 
-        //전체학생의 총점과 평균
-        int totalScore = m1.score1 + m2.score1 + m3.score2
-        +m2.score1 + m2.score2 + m2.score3 +
-                m3.score1 + m3.score2 + m3.score3;
+        //ArrayList 객체를 여러 개 저장할 수 있는 공간
+        ArrayList mTotal = new ArrayList();
+        mTotal.add(m1); //mTotal m1객체 저장
+        mTotal.add(m2);
+        mTotal.add(m3);
+        mTotal.add("ABC");
 
-        int totalE = totalScore / 9;
+//        public void add ( Object x ) { 모든 클래스는 Object를 상속받고 있음.
+//        }
+
+//        public Object get ( int index ) {
+//        }
+        int result = 0;
+        for (int i = 0; i<3; i++) {
+            MyPerson t = (MyPerson)mTotal.get(i); //ArrayList에서 값 가져올때는 순서(index)를 기준으로 가져옴
+            result += t.score1 + t.score2 + t.score3;
+        }
+
     }
 }
