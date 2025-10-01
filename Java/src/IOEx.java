@@ -10,7 +10,7 @@ public class IOEx {
         BufferedOutputStream bos
                 = new BufferedOutputStream(fos);
         String str = "ABC가나다";
-        byte[] r = str.getBytes(); //문자열 -> 바이트배열 변환
+        byte[] r = str.getBytes("utf-8"); //문자열 -> 바이트배열 변환
         bos.write(r);
         bos.flush();
         //      fos.write('가'); //파일에 쓰기 제대로 동작하지 않음 => 한글표현을 위해 최소 2바이트
@@ -22,7 +22,7 @@ public class IOEx {
         byte[] temp = new byte[1024];
         fis.read(temp); //1024바이트 읽기 -> temp에 저장
         //바이트배열 -> 문자열 변환
-        String msg = new String(temp);
+        String msg = new String(temp, "utf-8");
         System.out.print(msg.trim()); //빈 공백 제거 후 출력
         System.out.println("end");
     }
